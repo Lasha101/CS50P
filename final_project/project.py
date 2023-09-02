@@ -6,7 +6,7 @@ import numpy as np
 
 # The main entry point of the program
 def main():
-    years = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    years = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
     prices = get_bitcoin_prices()
 
     # Create a Data object with years and prices
@@ -66,20 +66,18 @@ def get_bitcoin_prices():
         price = price / 1000
 
         # Generate random fluctuations for 10 iterations
-        for _ in range(10):
+        for _ in range(12):
             price = round(price * random.uniform(0.1, 2))
             prices.append(price)
     except requests.RequestException:
         sys.exit()
-
-    print()
-    print(prices)
     return prices
 
 # Convert the input date into a float value
 def date(date):
     try:
         date = float(date)
+        date = 12 - date
         return date
     except ValueError:
         raise ValueError("Only Integer or Float!")
@@ -98,9 +96,7 @@ def make_equation(coefs):
 # Calculate the derivative of the equation at the given value and analyze the result
 def calculate_derivative(equation, value):
     derivative = np.polyder(equation)
-    print("DERIVATIVE -----", str(derivative))
     derivative_at_x = np.polyval(derivative, value)
-    print("VALUE -----: ", str(value))
     print(f"Derivative at x={value}: {derivative_at_x}")
 
     if derivative_at_x > 0:
