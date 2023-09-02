@@ -1,44 +1,70 @@
-# Bitcoin Price Analysis
+# Bitcoin Price Analysis with Regression and Derivative Calculations
 
 #### Video Demo: [https://youtu.be/CNZqR5cIzwY]
 
-#### Description:
-The "Bitcoin Price Analysis" project aims to analyze historical Bitcoin price data and provide insights into the trend, equation, derivative, and inclination slope of the Bitcoin price curve.
+In this project, I leverage programming and mathematical tools to create a continuous curve based on simulated input values. By employing regression fitting extrapolation, the program connects data points (simulated Bitcoin prices) in a way that resembles having prices available for every millisecond. The x-coordinate represents time, while the y-coordinate corresponds to the price.
 
-This project consists of two files:
+## Project Overview
 
-- `project.py`: This file contains the main code for Bitcoin price analysis.
+The primary goal of this project is to analyze Bitcoin price data and gain insights into its behavior over time. Through regression analysis, the program calculates the equation of the curve that best fits the provided data points. This equation enables us to estimate Bitcoin prices for any given date within the dataset.
 
-- `test_project.py`: This file contains unit tests for the functions and classes in `project.py`.
+## Features
 
-The code in `project.py` includes the following functions and classes:
+- **Regression Analysis:** The program utilizes the NumPy library to perform polynomial regression fitting on the simulated Bitcoin price data. This allows us to establish a mathematical equation that approximates the relationship between time and price.
 
-- `Data`: A class that encapsulates the years and prices data used for regression analysis. It provides methods to calculate regression coefficients using NumPy's `polyfit` function.
+- **Extrapolation:** With the derived regression equation, the program extends the curve beyond the provided data points, enabling the estimation of Bitcoin prices at arbitrary time intervals.
 
-- `get_bitcoin_prices()`: A function that retrieves historical Bitcoin prices from the CoinDesk API and generates random fluctuations for simulation purposes.
+- **Derivative Calculation:** The project goes beyond simple price estimation. It calculates the derivative of the curve at a specific point in time. This derivative indicates the rate of change of Bitcoin prices at that particular moment, providing insights into the price evolution.
 
-- `date()`: A utility function to convert the user-input date to a float value.
+- **Tangent Slope Analysis:** The program further interprets the derivative by calculating the inclination slope of the tangent line at the chosen time point. This slope offers an understanding of the degree of inclination of the curve at that specific moment.
+- 
+## Usage       !ATTANTION to the python commands! For different OS they may be different!
 
-- `get_value()`: A function that estimates the Bitcoin price on the given date using the regression equation.
+To utilize the Bitcoin Price Analysis program, ensure you have the following Python libraries/modules installed:
 
-- `make_equation()`: A function that generates a polynomial equation based on the regression coefficients.
+- `numpy`
+- `requests`
+- `pytest`
 
-- `calculate_derivative()`: A function that calculates the derivative of the polynomial equation and determines the rate of change at the estimated Bitcoin price.
+You can install these packages using the following commands:
 
-- `inclination_slope()`: A function that calculates the angle of inclination in degrees based on the rate of change.
+```
+pip install numpy requests pytest
+```
+Once you have these libraries/modules installed, you can proceed to use the program as follows:
 
-The `test_project.py` file contains unit tests for the functions in `project.py` to ensure their correctness and functionality.
+Clone the Repository:
+Clone the GitHub repository containing the Bitcoin Price Analysis project to your local machine.
+```
+git clone https://github.com/Lasha101/price-analysis.git
+```
+Navigate to the Project Directory:
+Navigate to the directory where you cloned the repository.
+```
+cd final_project
+```
+Run the Program:
+To use the program, execute the main script. You can do this by running the following command:
+```
+python project.py
+```
+Input a Date:
+After running the script, the program will prompt you to enter a date. Please remember that the program provides simulated prices for the past 12 months. If you want to obtain the price from 3 months ago, enter 3. For a price from 5 and a half months ago, enter 5.5. The valid range for input is from 0 to 12 months. However, if you input a date outside of this range, you will still receive a price, but it will be entirely simulated. 
+Observe Results:
 
-The tests in `test_project.py` include the following functions:
+The program will provide you with the following information in your terminal:
 
-- `test_date()`: A function that tests the `date()` function to ensure it raises a `ValueError` for invalid inputs.
+- Estimated Bitcoin price at the specified date.
+- Derivative of the curve function at that point, indicating the rate of change of Bitcoin prices.
+- Angle of inclination of the tangent line to the curve at the chosen time, offering insights into the rate of change.
 
-- `test_calculate_derivative()`: A function that tests the `calculate_derivative()` function with different inputs to verify its correctness.
+Feel free to explore the code and adapt it to your specific analysis needs. 
 
-- `test_inclination_slope()`: A function that tests the `inclination_slope()` function with different inputs to verify its correctness.
+Testing (Optional):
 
-To use this project, execute the `project.py` file. It will perform Bitcoin price analysis based on the provided code. You can also run the unit tests in `test_project.py` to verify the correctness of the implemented functions and classes.
+If you're interested in running the test suite for the program, you can do so using the pytest framework. The tests are defined in the test_project.py script. To run the tests, execute the following command:
+```
+pytest test_project.py
+```
+This will execute the test cases defined for the program functions and provide you with information about their correctness.
 
-Please note that the historical Bitcoin price data in this project is simulated. For actual price analysis, consider replacing the random fluctuations with real historical price data.
-
-Feel free to explore the code, make modifications, and adapt it to suit your specific needs and requirements. Happy analyzing!
